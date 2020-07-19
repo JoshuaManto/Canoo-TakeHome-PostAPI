@@ -1,0 +1,49 @@
+service: CanooTakeHomeAPI-POSTAPI
+
+custom:
+  secrets: ${file(secrets.json)}
+  pythonRequirements:
+    dockerizePip: non-linux
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-east-2
+  stage: dev
+  environment:
+    DBNAME: ${self:custom.secrets.DBNAME}
+    USER: ${self:custom.secrets.USER}
+    HOST: ${self:custom.secrets.HOST}
+    PASS: ${self:custom.secrets.PASS}
+    PORT: ${self:custom.secrets.PORT}
+  apiKeys:
+    - API-KEY-POST
+
+# you can add statements to the Lambda function's IAM Role here
+#  iamRoleStatements:
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:ListBucket"
+#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:PutObject"
+#      Resource:
+#        Fn::Join:
+#          - ""
+#          - - "arn:aws:s3:::"
+#            - "Ref" : "ServerlessDeploymentBucket"
+#            - "/*"
+
+functions:
+  addLogs:
+    handler: handler.addLogs
+    events:
+      - http:
+          path: addLogs
+          method: post
+          cors: true
+          private: true
+
+plugins:
+  - serverless-python-requirements
