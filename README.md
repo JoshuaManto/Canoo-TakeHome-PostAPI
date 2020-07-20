@@ -134,14 +134,23 @@ A policy I was thinking is to limit the lambda function to only be able to inter
 I also found this policy “AWSLambdaVPCAccessExecutionRole” that could be fairly useful since RDS policies are limited unlike DynamoDB policies where you could create custom ones with specific actions.
 
 "Effect": "Allow",
+
 "Action": [
+
 "logs:CreateLogGroup",
+
 "logs:CreateLogStream",
+
 "logs:PutLogEvents",
+
 "ec2:CreateNetworkInterface",
+
 "ec2:DescribeNetworkInterfaces",
+
 "ec2:DeleteNetworkInterface"
+
 ],
+
 "Resource": "\*"
 
 #### Model and Mapping templates
