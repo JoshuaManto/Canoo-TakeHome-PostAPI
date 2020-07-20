@@ -30,7 +30,7 @@ npm install -g serverless
 pip3 install virtualenv
 ```
 
-Then create a virtual environment to handle Python packages with Lambda
+Then create a virtual environment to handle Python packages
 
 ```
 virtualenv venv --python=python3
