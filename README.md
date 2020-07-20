@@ -19,6 +19,7 @@ PRIMARY KEY (`error_log_id`)
 There are 2 GitHub repositories: 1 for the GET API and 1 for the POST API. Clone both into your machine.
 
 https://github.com/JoshuaManto/Canoo-TakeHome-GetAPI
+
 https://github.com/JoshuaManto/Canoo-TakeHome-PostAPI
 
 Node, Python, Serverless, Virtualenv, and Docker are needed for both APIs so you’d need to install them if you don’t already have them in your machine.
